@@ -12,6 +12,7 @@ from base64 import (
     b64encode,
     b64decode,
 )
+# generation of crypto keys 
 def genkeys(public_fname,private_fname):
     random_generator = Random.new().read
     key = RSA.generate(1024, random_generator) #generate pub and priv key
@@ -71,4 +72,17 @@ def check_authenticity(text,signature,publickey):
         return 1
     else:
         return 0
+
+def start_client():
+    clear_screen()
+    print(bcolors.OKBLUE+"Trying to connect and handshake with the server..."+bcolors.ENDC)
+    
+    try:
+        server_sock.bind(('127.0.0.1',10000))
+        server_sock.listen(10)
+    except Exception as e:
+        print(bcolors.FAIL+"Couldn't start the client!"+bcolors.ENDC)
+        print(e)
+        sys.exit(0)
+
     
