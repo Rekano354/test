@@ -12,6 +12,7 @@ from base64 import (
     b64encode,
     b64decode,
 )
+
 # generation of crypto keys
 def genkeys(public_fname,private_fname):
     random_generator = Random.new().read
